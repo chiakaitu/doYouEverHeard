@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    background-image: url(../images/playstation/playstation-pattern.png);
+    font-family: sans-serif;
+}
+
+/* 隱藏關 */
+#AQ span {
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 40px;
+    left: 55px;
+}
+
+#AQ:hover {
+    cursor: pointer;
+}
+
+/* 標題文字 */
+#titleText {
+    width: 70%;
+    position: absolute;
+    top: 45%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+}
+
+/* 裝Start鈕的容器，同時將自己與按鈕固定在畫面正中央 */
+#containerOfStart {
+    position: fixed;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#containerOfStart a {
+    display: block;
+    width: 500px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 3rem;
+    font-weight: bolder;
+    text-decoration: none;
+    color: #333;
+    border: 2px solid #333;
+    letter-spacing: 5px;
+    text-align: center;
+    position: relative;
+    transition: all .35s;
+}
+
+#containerOfStart a span {
+    position: relative;
+    z-index: 2;
+}
+
+#containerOfStart a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ff595e;
+    transition: all .35s;
+}
+
+#containerOfStart a:hover {
+    color: #fff;
+}
+
+#containerOfStart a:hover::after {
+    width: 100%;
+}
+
+/* 遊戲方法按鈕的設計 */
+#containerOfRule {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#containerOfRule button {
+    display: block;
+    width: 250px;
+    height: 50px;
+    background-color: #333;
+    line-height: 50px;
+    font-size: 2rem;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 2px;
+    border: 2px solid #333;
+    transition: all .35s;
+}
+
+#containerOfRule .icon {
+    width: 50px;
+    height: 50px;
+    border: 2px solid transparent;
+    position: absolute;
+    transform: rotate(45deg);
+    right: 0;
+    top: 0;
+    z-index: -1;
+    transition: all .35s;
+}
+
+#containerOfRule .icon i {
+    width: 30px;
+    position: absolute;
+    top: calc(50% - 15px);
+    left: calc(50% - 10px);
+    transform: rotate(-45deg);
+    transition: all .35s;
+    color: #8ac926;
+}
+
+#containerOfRule button:hover {
+    width: 200px;
+    border: 2px solid #8ac926;
+    background: transparent;
+    color: #8ac926;
+    cursor: pointer;
+}
+
+#containerOfRule button:hover + .icon {
+    border: 2px solid #8ac926;
+    right: -25%;
+}
+
+/* 說明畫面的設計 */
+#explanation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 60%;
+    height: 85vh;
+    background-image: url(../images/robots/robots.png);
+    border: 20px double #1982c4;
+    box-shadow: 10px 10px 5px #ccc;
+    display: none;
+}
+
+/* 說明頁面的叉叉以及下一頁按鈕 */
+#explanation i {
+    width: 40px;
+    height: 40px;
+    font-size: 50px;
+    line-height: 40px;
+    text-align: center;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fff;
+}
+#explanation i:hover {
+    cursor: pointer;
+}
+
+/* 說明頁面的叉叉按鈕 */
+#explanation .fa-times-circle {
+    color: #ff595e;
+    top: calc(0% - 30px);
+    right: calc(0% - 30px);
+}
+
+/* 說明頁面的下一頁按鈕 */
+#explanation .fa-chevron-circle-right {
+    color: #8ac926;
+    bottom: calc(0% + 20px);
+    right: calc(0% + 20px);
+}
+
+/* 說明頁面內文 */
+#explanation .rule {
+    color: #fff;
+    padding: 40px 60px;
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 暫時先把說明頁第二頁藏起來 */
+#explanation #secondPage {
+    display: none;
+}

@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    background-image: url(../images/playstation/playstation-pattern.png);
+    font-family: sans-serif;
+
+    /* 用來控制Playstation icon大小 */
+    font-size: 10px;
+}
+
+/* 重播按鈕 */
+#divReplay {
+    width: 250px;
+    height: 250px;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9, 0.9);
+    border: 8px solid #6a4c93;
+    border-radius: 50%;
+}
+#divReplay:hover {
+    cursor: pointer;
+    transform: translate(-50%, -50%) scale(1, 1);
+}
+
+#divReplay .fa-repeat {
+    width: 250px;
+    font-size: 200px;
+    line-height: 250px;
+    text-align: center;
+    color: #6a4c93;
+    position: absolute;
+    left: calc(0% - 10px);
+    top: calc(0% - 5px);
+}
+
+body{
+    height: 100%;
+}
+
+/* 最外層的容器，幫助固定選項的box在畫面最下面而已 */
+.wrapper {
+    width: 100%;
+    height: 35vh;
+    margin-bottom: 50px;
+    /* 確認範圍用 */
+    /* background-color: #444;  */
+    position: absolute;
+    bottom: 0;
+}
+
+/* 選擇題 */
+/* 內層設定Grid的容器 */
+.wrapper .boxMCQ {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 120px;  
+    
+    /* 確認範圍用 */
+    /* background-color: #888;  */
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* 選項按鈕外觀 */
+.wrapper .boxMCQ .multipleChoice {
+    border: 4px solid #444;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 20px 50px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+}
+.wrapper .boxMCQ .multipleChoice:hover {
+    border: none;
+    box-shadow: 5px 10px 5px #888;
+    transform: translate(-5px, -10px);
+    cursor: pointer;
+
+    /* 測試突出比較好還是凹陷 - 凹陷版 */
+    /* border: 4px solid #444;
+    box-shadow: 2px 2px 10px #888 inset; */
+}
+
+@media only screen and (max-width: 880px){
+    .wrapper {
+        height: 45vh;
+        margin-bottom: 30px;
+    }
+    .wrapper .boxMCQ {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 11vh;
+        width: 430px;
+        height: 100%;
+    }
+    .wrapper .boxMCQ .multipleChoice {
+        margin: 8px;
+    }
+    .wrapper .boxMCQ p {
+        margin-left: 50px;
+        font-size: 12px;
+    }    
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 880px) {
+    .wrapper .boxMCQ {
+        width: 90%;
+    }    
+}
+
+/* 選項內文字設定 */
+.wrapper .boxMCQ p {
+    margin-left: 20px;
+    font-size: 32px;
+    color: #666;
+}
+.wrapper .boxMCQ .multipleChoice:hover p {
+    color: #444;
+}
+
+/* Playstation icon */
+.wrapper .boxMCQ .multipleChoice span {
+    display: block;
+}
+
+.triangle span {
+    width: 0;
+    height: 0;
+    border-left: 1.7em solid transparent;
+    border-right: 1.7em solid transparent;
+    border-bottom: 2.8em solid #1d6f56;
+    margin-left: 0.5em;
+    transform: scale(0.9);
+    position: relative;
+}
+.triangle span::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-left: 1.7em solid transparent;
+    border-right: 1.7em solid transparent;
+    border-bottom: 2.8em solid #FFF;
+    left: -1.7em;
+    top: 0.2em;
+    transform: scale(0.55);
+}
+
+.square span {
+    width: 4.5em;
+    height: 4.5em;
+    border: 0.7em solid #d49ac0;
+    transform: scale(0.55);
+}
+
+.circle span {
+    width: 4.5em;
+    height: 4.5em;
+    border: 0.7em solid #eb5535;
+    transform: scale(0.6);
+    border-radius: 50%;
+}
+
+.cross span {
+    position: relative;
+    width: 4.5em;
+    height: 4.5em;
+}
+.cross span::before,
+.cross span::after {
+    content: "";
+    width: 0;
+    height: 100%;
+    border: 0.4em solid #8d95c7;
+    position: absolute;
+    transform: scale(0.55) rotate(45deg);
+    left: 50%;
+    margin-top: -0.4em;
+    margin-left: -0.4em;
+}
+.cross span::after {
+    transform: scale(0.55) rotate(-45deg);
+}
+
+/* 下一頁按鈕 */
+.wrapper i{
+    width: 60px;
+    height: 60px;
+    font-size: 70px;
+    line-height: 60px;
+    text-align: center;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #8ac926;
+    bottom: calc(0% - 20px);
+    right: calc(0% + 40px);
+    z-index: 3;
+    display: none;
+}
+.wrapper i:hover {
+    cursor: pointer;
+}
+
+
+/* 題數計數器 */
+.countText {
+    font-size: 20px;
+    color: #888;
+    margin: 10px 0 0 10px;
+}
+
+/* 答題結果畫面 */
+.answerPage {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(255, 255, 255, 0.95);
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    display: none;
+}
+
+.answerPage i {
+    font-size: 250px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.answerPage .fa-circle-o {
+    color: #8ac926;
+}
+.answerPage .fa-times {
+    color: #ff595e;
+    font-size: 280px;
+}
+
+.answerPage div {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.answerPage div p {
+    font-size: 52px;
+}
+
+/* 成績結算頁面 */
+#scorePage {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    background-image: url(../images/geometry/geometry_@2X.png);
+    display: none;
+}
+
+#scorePage .scoreText {
+    font-size: 52px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#scorePage .score {
+    font-size: 60px;
+    position: absolute;
+    top: 45%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+}
+
+#scorePage #score {
+    font-size: 240px;
+    font-weight: bolder;
+    color: #1982C4;
+}
+
+#scorePage .containerofBacktoIndex {
+    position: fixed;
+    bottom: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .2s;
+}
+#scorePage .containerofBacktoIndex a {
+    display: block;
+    width: 200px;
+    height: 50px;
+    background-color: transparent;
+    border: 3px solid #999;
+    border-radius: 50px;
+    
+    color: #777;
+    text-decoration: none;
+    line-height: 50px;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bolder;
+    letter-spacing: 5px;
+    
+    transition: all .5s;
+}
+#scorePage .containerofBacktoIndex:hover a {
+    color: #fff;
+    transition: all .5s;
+}
+#scorePage .containerofBacktoIndex:hover {
+    background-color: #ffca3a;
+    border-radius: 50px;
+    transition: all .2s;
+}
+/* 問答題 */
+.wrapper .boxAQ {
+    width: 500px;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    /* 確認範圍用 */
+    /* background-color: #000;  */
+}
+
+.wrapper .boxAQ #inputAQ {
+    width: 450px;
+    height: 60px;
+    margin: 10px 0;
+    padding: 0 30px;
+    font-size: 32px;
+    line-height: 60px;
+    border: 4px solid #444;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+}
+.wrapper .boxAQ #inputAQ:focus {
+    outline: none;
+}
+
+.wrapper .boxAQ p {
+    font-size: 16px;
+    color: #888;
+    position: absolute;
+    top: 18px;
+    left: 50px;
+}
+
+.wrapper .boxAQ #submit {
+    width: 60px;
+    height: 32px;
+    margin-top: 20px;
+    border: 2px double #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #1982c4;
+
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+
+    transition: all .35s;
+}
+.wrapper .boxAQ #submit:hover {
+    background-color: transparent;
+    border: 3px solid #1982c4;
+    color: #1982c4;
+    font-weight: bold;
+    transform: scale(1.1, 1.1);
+    transition: all .2s;
+}

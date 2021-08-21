@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你有聽過嗎？</title>
+    <link rel="stylesheet" href="./css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/game.css">
+    <script src="./js/questionBank.js"></script>
+    <script src="./js/jquery-3.4.1.js"></script>
+    <script src="./js/gameAQ.js"></script>
+</head>
+
+<body>
+    <!-- 播放聲音 -->
+    <audio id="audio" src=""></audio>
+
+    <!-- 題數 -->
+    <p class="countText">題數：<span id="now"></span>/10</p>
+
+    <!-- 中央重播鈕 -->
+    <div id="divReplay">
+        <i class="fa fa-repeat" aria-hidden="true"></i>
+    </div>
+
+    <!-- 填答區 -->
+    <div class="wrapper">
+        <div class="boxAQ">
+            <p id="hintAQ">這邊是輸入提示 e.g.幾個字</p>
+            <input id="inputAQ" type="text" placeholder="請輸入你的答案">
+
+            <div id="submit">送出</div>
+        </div>
+
+        <!-- 下一題鈕 -->
+        <div><i id="nextPage" class="fa fa-chevron-circle-right" aria-hidden="true"></i></div>
+    </div>
+
+    <!-- 答對畫面 -->
+    <div class="answerPage" id="correct">
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+        <div>
+            <p>恭喜你答對了！</p>
+        </div>
+    </div>
+
+    <!-- 答錯畫面 -->
+    <div class="answerPage" id="wrong">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        <div>
+            <p>答錯摟</p>
+            <br>
+            <p>答案是<span id="correctAns"></span></p>
+        </div>
+    </div>
+
+    <!-- 成績結算頁面 -->
+    <div id="scorePage">
+        <div>
+            <p class="scoreText">您的分數是：</p>
+            <p class="score"><span id="score"></span>/10</p>
+        </div>
+        <div class="containerofBacktoIndex">
+            <a href="./index.html"><span>回首頁</span></a>
+        </div>
+    </div>
+
+</body>
+
+</html>
